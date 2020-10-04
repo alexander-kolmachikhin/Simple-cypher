@@ -5,7 +5,7 @@
     android:layout_margin="4dp"
     android:layout_width="80dp"
     android:layout_height="wrap_content"
-    app:contentPadding="8dp"
+    app:contentPadding="4dp"
     app:cardCornerRadius="@dimen/cardCornerRadius"
     app:cardElevation="4dp">
 
@@ -17,22 +17,22 @@
 
         <TextView style="@style/Text"
             android:id="@+id/symbolText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:gravity="center"
             tools:text="Ж"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="3dp"
-            app:tint="@color/black"
+            android:layout_width="28dp"
+            android:layout_height="30dp"
+            app:tint="?attr/colorAccent"
             app:srcCompat="@drawable/ic_arrow"/>
 
         <TextView style="@style/Text"
             android:id="@+id/replacementText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:gravity="center"
             tools:text="Ж"/>
 
     </LinearLayout>

@@ -1,36 +1,56 @@
-<androidx.core.widget.NestedScrollView
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
     android:clickable="true"
-    android:focusableInTouchMode="true"
-    style="@style/Scrollable">
+    android:focusableInTouchMode="true">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        style="@style/Scrollable">
 
-        <fragment
-            android:name="simple.cypher.presentation.cypher.CypherFragment"
-            android:id="@+id/cypherFragment"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            tools:layout="@layout/cypher_fragment"/>
+            android:orientation="vertical">
 
-        <fragment
-            android:name="simple.cypher.presentation.symbol.list.SymbolListFragment"
-            android:id="@+id/symbolListFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            tools:layout="@layout/symbol_list_fragment"/>
+            <fragment
+                android:name="simple.cypher.presentation.cypher.CypherFragment"
+                android:id="@+id/cypherFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                tools:layout="@layout/cypher_fragment"/>
 
-    </LinearLayout>
+            <fragment
+                android:name="simple.cypher.presentation.symbol.list.SymbolListFragment"
+                android:id="@+id/symbolListFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="60dp"
+                tools:layout="@layout/symbol_list_fragment"/>
 
-</androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shadow"/>
+
+    <View android:layout_gravity="bottom"
+        android:rotation="180"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shadow"/>
+
+</FrameLayout>

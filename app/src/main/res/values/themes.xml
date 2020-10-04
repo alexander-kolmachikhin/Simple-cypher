@@ -1,23 +1,46 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="LightTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/white</item>
         <item name="colorAccent">@color/black</item>
         <item name="colorPrimary">@color/white</item>
         <item name="colorOnPrimary">@color/black</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorSecondary">@color/black</item>
         <item name="colorOnSecondary">@color/white</item>
-        <item name="android:dialogTheme">@style/DialogTheme</item>
+        <item name="android:dialogTheme">@style/LightDialogTheme</item>
     </style>
 
-    <style name="DialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+    <style name="LightDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="colorAccent">@color/black</item>
         <item name="colorPrimary">@color/white</item>
         <item name="colorOnPrimary">@color/black</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorSecondary">@color/black</item>
         <item name="colorOnSecondary">@color/white</item>
-        <item name="android:windowBackground">@drawable/white_block</item>
+        <item name="android:windowBackground">@drawable/light_card</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="DarkTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:dialogTheme">@style/DarkDialogTheme</item>
+    </style>
+
+    <style name="DarkDialogTheme" parent="Theme.MaterialComponents.Dialog.Alert">
+        <item name="colorAccent">@color/white</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:windowBackground">@drawable/dark_card</item>
         <item name="windowNoTitle">true</item>
     </style>
 

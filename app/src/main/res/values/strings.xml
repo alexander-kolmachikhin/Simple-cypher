@@ -1,14 +1,11 @@
 <resources>
-    <string name="app_name">Cypher</string>
 
-    <string name="cypher_name">Название шифра</string>
-    <string name="edit">Изменить</string>
-    <string name="save">Сохранить</string>
-    <string name="done">Готово</string>
-    <string name="cyphers">Шифры</string>
-    <string name="enter_text">Введите текст</string>
-    <string name="text_encoding">Шифрование текста</string>
-    <string name="remove">Удалить</string>
-    <string name="set_symbol">Настройка символа</string>
+    <string name="app_name">Simple Cypher</string>
+    <string name="save">Save</string>
+    <string name="enter_text">Enter text</string>
+    <string name="text_encryption">Text encryption</string>
+    <string name="remove">Remove</string>
+    <string name="setting_up_a_symbol">Setting up a symbol</string>
+    <string name="symbols">Symbols</string>
 
 </resources>

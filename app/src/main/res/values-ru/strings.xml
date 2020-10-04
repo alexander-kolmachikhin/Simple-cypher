@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">Простой шифр</string>
+    <string name="save">Сохранить</string>
+    <string name="enter_text">Введите текст</string>
+    <string name="text_encryption">Шифрование текста</string>
+    <string name="remove">Удалить</string>
+    <string name="setting_up_a_symbol">Настройка символа</string>
+    <string name="symbols">Символы</string>
+
+</resources>

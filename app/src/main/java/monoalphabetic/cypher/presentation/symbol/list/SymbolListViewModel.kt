@@ -14,7 +14,7 @@ class SymbolListViewModel(symbolRepository: SymbolRepository) : BaseViewModel() 
     val liveSymbolItemList = Transformations.map(symbolRepository.getLiveSymbolMap()) { map ->
         map.map {
             SymbolItem(it.key, it.value)
-        }
+        }.sortedBy { it.symbol }
     }
 
     fun onItemClick(item: SymbolItem) = liveOpenSymbolDialog.setValue(

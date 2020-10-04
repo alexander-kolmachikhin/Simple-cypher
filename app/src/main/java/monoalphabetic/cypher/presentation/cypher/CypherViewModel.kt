@@ -22,14 +22,13 @@ class CypherViewModel(
         symbolRepository.getLiveSymbolMap().observeForever(symbolMapObserver)
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        liveSymbolMap.removeObserver(symbolMapObserver)
-    }
-
     fun onEditTextChanged(text: String) {
         setEditText(text)
         setResultText(symbolRepository.encode(text))
+    }
+
+    fun release() {
+        liveSymbolMap.removeObserver(symbolMapObserver)
     }
 
     private fun setEditText(text: String) {

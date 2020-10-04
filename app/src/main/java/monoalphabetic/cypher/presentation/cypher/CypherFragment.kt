@@ -1,6 +1,7 @@
 package monoalphabetic.cypher.presentation.cypher
 
 import android.os.Bundle
+import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
@@ -14,7 +15,8 @@ import util.text.SimpleTextWatcher
 class CypherFragment : BaseFragment(R.layout.cypher_fragment) {
 
     val viewModel by viewModels<CypherViewModel> { CypherViewModelFactory(this) }
-    val editWatcher = SimpleTextWatcher(viewModel::onEditTextChanged)
+
+    var editWatcher = SimpleTextWatcher { }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,9 +27,12 @@ class CypherFragment : BaseFragment(R.layout.cypher_fragment) {
     override fun onDestroyView() {
         super.onDestroyView()
         editText.removeTextChangedListener(editWatcher)
+        editWatcher = SimpleTextWatcher { }
+        viewModel.release()
     }
 
     fun setListeners() {
+        editWatcher = SimpleTextWatcher(viewModel::onEditTextChanged)
         editText.addTextChangedListener(editWatcher)
         KeyboardVisibilityMonitor(viewLifecycleOwner, activity as AppCompatActivity) {
             if (!it.isOpened) {

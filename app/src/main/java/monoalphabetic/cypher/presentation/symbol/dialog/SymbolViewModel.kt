@@ -12,7 +12,13 @@ class SymbolViewModel(
     replacement: Char?
 ) : BaseViewModel() {
 
-    val showDeleteButton = !(symbol == null || replacement == null)
+    enum class Mode { CREATE, EDIT }
+
+    val mode = when (symbol == null || replacement == null) {
+        true -> Mode.CREATE
+        else -> Mode.EDIT
+    }
+
     val liveSymbol = state.getLiveData<Char?>(KEY_SYMBOL, symbol)
     val liveReplacement = state.getLiveData<Char?>(KEY_REPLACEMENT, replacement)
     val liveClose = NoValueSingleLiveData()

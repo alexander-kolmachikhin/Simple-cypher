@@ -1,7 +1,6 @@
 package monoalphabetic.cypher.presentation.symbol.dialog
 
 import android.os.Bundle
-import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import monoalphabetic.cypher.R
 import monoalphabetic.cypher.presentation.base.BaseDialog
 import util.extensions.hideKeyboard
 import util.extensions.onClick
-import util.extensions.onTextChanged
 import util.extensions.setCharIfNotEquals
 import util.text.SimpleTextWatcher
 
@@ -21,15 +19,15 @@ class SymbolDialog : BaseDialog() {
 
     val viewModel by viewModels<SymbolViewModel> { SymbolViewModelFactory(this, arguments) }
 
-    val symbolWatcher = SimpleTextWatcher { viewModel.onSymbolTextChanged(it.firstOrNull()) }
-    val replacementWatcher = SimpleTextWatcher { viewModel.onReplacementTextChanged(it.firstOrNull()) }
+    var symbolWatcher = SimpleTextWatcher { }
+    var replacementWatcher = SimpleTextWatcher { }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
         inflater.inflate(R.layout.symbol_dialog, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setDeleteButton()
+        setMode()
         setListeners()
         setObservers()
     }
@@ -38,17 +36,22 @@ class SymbolDialog : BaseDialog() {
         super.onDestroyView()
         symbolEdit.removeTextChangedListener(symbolWatcher)
         replacementEdit.removeTextChangedListener(replacementWatcher)
+        symbolWatcher = SimpleTextWatcher { }
+        replacementWatcher = SimpleTextWatcher { }
     }
 
-    fun setDeleteButton() {
-        deleteButton.isVisible = viewModel.showDeleteButton
+    fun setMode() {
+        deleteButton.isVisible = viewModel.mode == SymbolViewModel.Mode.EDIT
+        symbolEdit.isEnabled = viewModel.mode == SymbolViewModel.Mode.CREATE
     }
 
     fun setListeners() {
-        saveButton.onClick(viewModel::onSaveClick)
-        deleteButton.onClick(viewModel::onDeleteClick)
+        symbolWatcher = SimpleTextWatcher { viewModel.onSymbolTextChanged(it.firstOrNull()) }
+        replacementWatcher = SimpleTextWatcher { viewModel.onReplacementTextChanged(it.firstOrNull()) }
         symbolEdit.addTextChangedListener(symbolWatcher)
         replacementEdit.addTextChangedListener(replacementWatcher)
+        deleteButton.onClick(viewModel::onDeleteClick)
+        saveButton.onClick(viewModel::onSaveClick)
     }
 
     fun setObservers() {
@@ -60,5 +63,14 @@ class SymbolDialog : BaseDialog() {
     fun close() {
         hideKeyboard()
         dismiss()
+    }
+
+    override fun dismiss() {
+        /**
+         * Leak fix
+         */
+        symbolEdit.isCursorVisible = false
+        replacementEdit.isCursorVisible = false
+        super.dismiss()
     }
 }
